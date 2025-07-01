@@ -409,17 +409,26 @@ html, body, #root {
     font-size: 0.9rem;
   }
   
-  /* Adjust theme toggle for mobile */
+  /* Adjust theme toggle for mobile
   .theme-toggle {
     top: 20px;
     right: 20px;
     width: 48px;
     height: 48px;
-  }
+  } */
   
   .theme-toggle svg {
     width: 18px !important;
     height: 18px !important;
+  }
+  
+  /* Remove focus state on mobile after tap */
+  .theme-toggle:focus {
+    outline: none;
+  }
+  
+  .theme-toggle:active {
+    outline: none;
   }
   
   /* Adjust typography for readability */

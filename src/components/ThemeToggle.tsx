@@ -3,10 +3,16 @@ import { useTheme } from '../contexts/ThemeContext'
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme()
 
+  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    toggleTheme()
+    // Remove focus on mobile to prevent stuck focus state
+    e.currentTarget.blur()
+  }
+
   return (
     <button 
       className="theme-toggle"
-      onClick={toggleTheme}
+      onClick={handleToggle}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
