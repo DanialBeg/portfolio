@@ -337,7 +337,102 @@ html, body, #root {
   transform: rotate(180deg);
 }
 
-/* Desktop only - no mobile responsive styles */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Hide background animation on mobile */
+  .starry-night {
+    display: none;
+  }
+  
+  .portfolio::before {
+    display: none;
+  }
+
+  /* Make container full width with mobile padding */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    margin: 0;
+    box-shadow: none;
+  }
+  
+  /* Adjust header for mobile */
+  .header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+  
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  /* Adjust main content spacing */
+  .main {
+    gap: 40px;
+  }
+  
+  /* Optimize section spacing */
+  .section {
+    gap: 12px;
+  }
+  
+  .section-title {
+    font-size: 1rem;
+  }
+  
+  .section-content p {
+    font-size: 0.95rem;
+  }
+  
+  /* Adjust project and experience items */
+  .project-item,
+  .experience-item {
+    padding-bottom: 16px;
+  }
+  
+  /* Optimize links grid for mobile */
+  .links-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  
+  .link {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust theme toggle for mobile */
+  .theme-toggle {
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .theme-toggle svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  /* Adjust typography for readability */
+  .project-title,
+  .company {
+    font-size: 0.95rem;
+  }
+  
+  .description,
+  .project-description {
+    font-size: 0.9rem;
+  }
+}
 
 /* Starry Night Background */
 .portfolio::before {
