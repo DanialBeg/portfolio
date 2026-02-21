@@ -186,8 +186,8 @@ function PomodoroBuddySupport() {
           <section className="support-section support-contact">
             <h2 className="support-section-title">Contact</h2>
             <p>If you need help or have feedback, reach out at:</p>
-            <a href="mailto:support@example.com" className="contact-link">
-              support@example.com
+            <a href="mailto:support@danialbeg.com" className="contact-link">
+              support@danialbeg.com
             </a>
             <p className="contact-note">We'd love to hear from you.</p>
           </section>
