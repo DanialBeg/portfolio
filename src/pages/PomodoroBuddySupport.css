@@ -1,0 +1,210 @@
+.support-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+  position: relative;
+}
+
+.support-container {
+  width: 680px;
+  margin: 0 auto;
+  padding: 60px 40px 80px 40px;
+  background-color: var(--bg-primary);
+  box-shadow: 0 0 50px var(--shadow-color);
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.support-header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.support-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.support-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.support-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.support-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.support-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.support-section h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-top: 8px;
+  transition: color 0.3s ease;
+}
+
+.support-section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.support-section ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.support-section li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  padding-left: 20px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.support-section li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  transition: background-color 0.3s ease;
+}
+
+.support-section li strong {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.support-section strong {
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.faq-item,
+.troubleshoot-item {
+  padding: 20px 24px;
+  background-color: var(--link-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-item h3,
+.troubleshoot-item h3 {
+  margin-top: 0;
+}
+
+.support-contact {
+  text-align: center;
+  align-items: center;
+  padding: 32px;
+  background-color: var(--link-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-secondary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid var(--border-secondary);
+  transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-text);
+  border-color: var(--link-hover-bg);
+  transform: translateY(-1px);
+}
+
+.contact-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .support-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 32px 20px 60px 20px;
+    box-shadow: none;
+  }
+
+  .support-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+
+  .support-title {
+    font-size: 1.8rem;
+  }
+
+  .support-subtitle {
+    font-size: 1rem;
+  }
+
+  .support-content {
+    gap: 36px;
+  }
+
+  .support-section-title {
+    font-size: 1.15rem;
+  }
+
+  .faq-item,
+  .troubleshoot-item {
+    padding: 16px 18px;
+  }
+
+  .support-contact {
+    padding: 24px 18px;
+  }
+}
