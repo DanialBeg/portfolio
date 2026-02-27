@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/notes-to-anki", "destination": "https://anki-scribe.vercel.app/" },
+    { "source": "/notes-to-anki/(.*)", "destination": "https://anki-scribe.vercel.app/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
