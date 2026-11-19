@@ -17,8 +17,10 @@ interface ThemeProviderProps {
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(() => {
     // Check localStorage for saved theme preference
-    const savedTheme = localStorage.getItem('portfolio-theme') as Theme
-    return savedTheme || 'light'
+    // Fall back to the system preference when nothing has been saved yet
+    const savedTheme = localStorage.getItem('portfolio-theme') as Theme | null
+    if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
 
   useEffect(() => {
