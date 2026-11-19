@@ -1,12 +1,10 @@
 import './App.css'
 import ThemeToggle from './components/ThemeToggle'
-import { intro, experience, projects, posts, education, email, links } from './data'
+import { intro, experience, earlier, projects, posts, education, email, links } from './data'
 
 const isExternal = (href: string) => /^https?:/.test(href)
 const externalProps = (href: string) =>
   isExternal(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {}
-
-const hasDates = experience.some((r) => r.period)
 
 function App() {
   return (
@@ -22,6 +20,7 @@ function App() {
         <div className="top-right">
           <nav className="nav" aria-label="Sections">
             <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
             {posts.length > 0 && <a href="#writing">Writing</a>}
             <a href="#contact">Contact</a>
           </nav>
@@ -32,30 +31,47 @@ function App() {
       <main>
         <section className="intro">
           <h1 className="lede">
-            I build machine learning tools that lawyers actually use, at{' '}
+            I build machine learning systems that lawyers actually use, at{' '}
             <a href="https://www.lw.com" {...externalProps('https://www.lw.com')}>Latham &amp; Watkins</a>.
-            Before that I wrote software at BAE Systems, and interned at NASA JPL, Western Digital and
-            General Atomics.
+            Before that I built on-prem LLM tooling at BAE Systems, and interned at Western Digital,
+            NASA JPL and General Atomics.
           </h1>
           <p className="muted">
-            Mostly thinking about where AI fits into real professional workflows, and where it doesn't.
+            Mostly thinking about where AI fits into real professional workflows, how to keep it
+            honest and cheap, and where it doesn't belong at all.
           </p>
         </section>
 
         <section id="work" className="block" aria-labelledby="work-h">
           <h2 id="work-h" className="label">Work</h2>
-          <ul className={`rules ${hasDates ? 'with-dates' : ''}`}>
+          <ul className="rules">
             {experience.map((r) => (
-              <li key={r.company} className="rule-row">
-                {hasDates && <span className="date">{r.period}</span>}
-                <span>
-                  <a href={r.url} {...externalProps(r.url)}>{r.shortName ?? r.company}</a>
-                  <span className="muted"> · {r.title}</span>
-                  {r.summary && <span className="summary muted">{r.summary}</span>}
-                </span>
+              <li key={r.company} className="rule-row dated">
+                <span className="date">{r.period}</span>
+                <div className="role">
+                  <p>
+                    <a href={r.url} {...externalProps(r.url)}>{r.company}</a>
+                    <span className="muted"> · {r.title}</span>
+                  </p>
+                  {r.highlights && (
+                    <ul className="highlights">
+                      {r.highlights.map((h) => <li key={h}>{h}</li>)}
+                    </ul>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
+          <p className="earlier muted">
+            Earlier: internships at{' '}
+            {earlier.map((e, i) => (
+              <span key={e.name}>
+                {i > 0 && ' and '}
+                <a href={e.url} {...externalProps(e.url)}>{e.name}</a>
+              </span>
+            ))}
+            .
+          </p>
         </section>
 
         <section id="projects" className="block" aria-labelledby="projects-h">
@@ -63,8 +79,12 @@ function App() {
           <ul className="stack">
             {projects.map((p) => (
               <li key={p.name}>
-                <a href={p.url} {...externalProps(p.url)}>{p.name}</a>
+                <p className="project-head">
+                  {p.url ? <a href={p.url} {...externalProps(p.url)}>{p.name}</a> : <span>{p.name}</span>}
+                  {p.year && <span className="date">{p.year}</span>}
+                </p>
                 <p className="muted">{p.summary}</p>
+                {p.stack && <p className="stack-line">{p.stack}</p>}
               </li>
             ))}
           </ul>
@@ -88,7 +108,10 @@ function App() {
           <h2 id="edu-h" className="label">Education</h2>
           <ul className="plain">
             {education.map((e) => (
-              <li key={e.school}>{e.degree}, {e.school}</li>
+              <li key={e.school} className="spread">
+                <span>{e.degree}, {e.school}</span>
+                {e.period && <span className="date">{e.period}</span>}
+              </li>
             ))}
           </ul>
         </section>
