@@ -1,92 +1,134 @@
 import './App.css'
-import StarryNight from './components/StarryNight'
-import Header from './components/Header'
-import Section from './components/Section'
-import SocialLinks from './components/SocialLinks'
 import ThemeToggle from './components/ThemeToggle'
+import { intro, experience, earlier, projects, posts, education, email, links } from './data'
+
+const isExternal = (href: string) => /^https?:/.test(href)
+const externalProps = (href: string) =>
+  isExternal(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
 function App() {
-  const socialLinks = [
-    {
-      href: "mailto:contact@danialbeg.com",
-      label: "email",
-      icon: <span className="link-icon">✉️</span>
-    },
-    {
-      href: "https://github.com/danialbeg",
-      label: "github",
-      icon: (
-        <svg className="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-        </svg>
-      )
-    },
-    {
-      href: "https://linkedin.com/in/danialbeg",
-      label: "linkedin",
-      icon: (
-        <svg className="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      )
-    },
-    {
-      href: "https://x.com/danialbeg",
-      label: "twitter",
-      icon: (
-        <svg className="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-        </svg>
-      )
-    }
-  ]
-
   return (
-    <div className="portfolio">
-      <StarryNight />
-      <ThemeToggle />
-      <div className="container">
-        <Header 
-          name="Danial Beg" 
-          profileImage="profile.jpeg" 
-        />
+    <div className="page">
+      <header className="top">
+        <div className="identity">
+          <img src="/profile.jpg" alt="" className="avatar" width={40} height={40} />
+          <div>
+            <p className="name">{intro.name}</p>
+            <p className="muted">{intro.role}</p>
+          </div>
+        </div>
+        <div className="top-right">
+          <nav className="nav" aria-label="Sections">
+            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
+            {posts.length > 0 && <a href="#writing">Writing</a>}
+            <a href="#contact">Contact</a>
+          </nav>
+          <ThemeToggle />
+        </div>
+      </header>
 
-        <main className="main">
-          <Section title="currently">
-            <p>ml engineer @ latham & watkins ⚖️</p>
-            <p>building full-stack ml applications for the legal world</p>
-            <p>interested in the intersection of ai into professional workflows</p>
-          </Section>
+      <main>
+        <section className="intro">
+          <h1 className="lede">
+            I build machine learning systems that lawyers actually use, at{' '}
+            <a href="https://www.lw.com" {...externalProps('https://www.lw.com')}>Latham &amp; Watkins</a>.
+            Before that I built on-prem LLM tooling at BAE Systems, and interned at Western Digital,
+            NASA JPL and General Atomics.
+          </h1>
+          <p className="muted">
+            Mostly thinking about where AI fits into real professional workflows, how to keep it
+            honest and cheap, and where it doesn't belong at all.
+          </p>
+        </section>
 
-          <Section title="past">
-            <p className="description">swe @ <a href="https://baesystems.com" className="company-link" target="_blank" rel="noopener noreferrer">bae systems</a> ✈️</p>
-            <p className="description">intern @ <a href="https://westerndigital.com" className="company-link" target="_blank" rel="noopener noreferrer">western digital</a> 💾</p>
-            <p className="description">intern @ <a href="https://jpl.nasa.gov" className="company-link" target="_blank" rel="noopener noreferrer">nasa jpl</a> 🚀</p>
-            <p className="description">intern @ <a href="https://ga.com" className="company-link" target="_blank" rel="noopener noreferrer">general atomics</a> ⚛️</p>
-          </Section>
+        <section id="work" className="block" aria-labelledby="work-h">
+          <h2 id="work-h" className="label">Work</h2>
+          <ul className="rules">
+            {experience.map((r) => (
+              <li key={r.company} className="rule-row dated">
+                <span className="date">{r.period}</span>
+                <div className="role">
+                  <p>
+                    <a href={r.url} {...externalProps(r.url)}>{r.company}</a>
+                    <span className="muted"> · {r.title}</span>
+                  </p>
+                  {r.highlights && (
+                    <ul className="highlights">
+                      {r.highlights.map((h) => <li key={h}>{h}</li>)}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <p className="earlier muted">
+            Earlier: internships at{' '}
+            {earlier.map((e, i) => (
+              <span key={e.name}>
+                {i > 0 && ' and '}
+                <a href={e.url} {...externalProps(e.url)}>{e.name}</a>
+              </span>
+            ))}
+            .
+          </p>
+        </section>
 
-          <Section title="projects">
-            <div className="project-item">
-              <h3 className="project-title">
-                <a href="https://github.com/DanialBeg/AFib-Detection-Survey" className="project-link" target="_blank" rel="noopener noreferrer">
-                  a-fib detection
-                </a>
-              </h3>
-              <p className="project-description">study utilizing various ml models to detect atrial fibrilation utilizing ecg waveform data</p>
-            </div>
-            <p>more being filled in soon...</p>
-          </Section>
+        <section id="projects" className="block" aria-labelledby="projects-h">
+          <h2 id="projects-h" className="label">Projects</h2>
+          <ul className="stack">
+            {projects.map((p) => (
+              <li key={p.name}>
+                <p className="project-head">
+                  {p.url ? <a href={p.url} {...externalProps(p.url)}>{p.name}</a> : <span>{p.name}</span>}
+                  {p.year && <span className="date">{p.year}</span>}
+                </p>
+                <p className="muted">{p.summary}</p>
+                {p.stack && <p className="stack-line">{p.stack}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
 
-          <Section title="education">
-            <p className="description">master's, cs @ uci 🎓</p>
-            <p className="description">bachelor's, cs @ ucr 🎓</p>
-          </Section>
+        {posts.length > 0 && (
+          <section id="writing" className="block" aria-labelledby="writing-h">
+            <h2 id="writing-h" className="label">Writing</h2>
+            <ul className="rules">
+              {posts.map((p) => (
+                <li key={p.url} className="rule-row spread">
+                  <a href={p.url} {...externalProps(p.url)}>{p.title}</a>
+                  <span className="date">{p.date}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-          <Section title="links">
-            <SocialLinks links={socialLinks} />
-          </Section>
-        </main>
-      </div>
+        <section className="block" aria-labelledby="edu-h">
+          <h2 id="edu-h" className="label">Education</h2>
+          <ul className="plain">
+            {education.map((e) => (
+              <li key={e.school} className="spread">
+                <span>{e.degree}, {e.school}</span>
+                {e.period && <span className="date">{e.period}</span>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+
+      <footer id="contact" className="foot">
+        <p className="sayhi">
+          Say hi at <a href={`mailto:${email}`}>{email}</a>
+        </p>
+        <ul className="links">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a href={l.href} {...externalProps(l.href)}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </footer>
     </div>
   )
 }
