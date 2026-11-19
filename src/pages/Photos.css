@@ -1,0 +1,388 @@
+/* Photo gallery and its upload page. Shares tokens from index.css and
+   .top/.lede/.muted/.label from App.css. */
+
+.gallery-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+.gallery-page a,
+.link-btn {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.gallery-page a:hover,
+.link-btn:hover {
+  color: var(--text-primary);
+}
+
+.gallery-top {
+  margin-bottom: 56px;
+}
+
+.gallery-intro {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.gallery-state {
+  padding: 40px 0;
+}
+
+/* Masonry grid via CSS columns: keeps each photo's own aspect ratio */
+.grid {
+  list-style: none;
+  columns: 3 320px;
+  column-gap: 16px;
+}
+
+.grid li {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--bg-secondary);
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.tile:hover img {
+  opacity: 0.92;
+  transform: scale(1.015);
+}
+
+.tile-title {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(12, 12, 11, 0.94);
+  color: #ebe9e3;
+}
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  min-height: 0;
+}
+
+.lightbox-figure img {
+  max-width: min(100%, 1600px);
+  max-height: calc(100vh - 220px);
+  max-height: calc(100dvh - 220px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.lightbox-figure figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+  max-width: 60ch;
+}
+
+.lb-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+}
+
+.lb-caption {
+  font-size: 0.875rem;
+  color: #a6a39b;
+}
+
+.lightbox-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightbox-controls button {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #3a3935;
+  border-radius: 999px;
+  background: transparent;
+  color: #ebe9e3;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.lightbox-controls button:hover {
+  border-color: #6a6862;
+}
+
+.lb-count {
+  min-width: 64px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #a6a39b;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Upload page ---------- */
+
+.admin {
+  max-width: 720px;
+}
+
+.admin.narrow {
+  max-width: 400px;
+  padding-top: 120px;
+}
+
+.admin .lede {
+  margin-bottom: 28px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.admin input,
+.admin textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* stops iOS zooming on focus */
+  padding: 10px 12px;
+  border: 1px solid var(--border-secondary);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+.btn {
+  min-height: 44px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.link-btn {
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.link-btn.danger:hover {
+  color: #c0392b;
+}
+
+.form-error {
+  color: #c0392b;
+  font-size: 0.875rem;
+}
+
+[data-theme='dark'] .form-error,
+[data-theme='dark'] .link-btn.danger:hover {
+  color: #f08c7e;
+}
+
+.dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 40px 20px;
+  border: 1px dashed var(--border-secondary);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzone:focus-within {
+  border-color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.dropzone input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropzone-title {
+  font-weight: 500;
+}
+
+.pending {
+  list-style: none;
+  margin: 24px 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pending-row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.pending-row img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+}
+
+.pending-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pending-status {
+  font-size: 0.8125rem;
+}
+
+.publish {
+  width: 100%;
+}
+
+.existing {
+  margin-top: 64px;
+}
+
+.existing-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.existing-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.existing-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+}
+
+.existing-grid .link-btn {
+  align-self: flex-start;
+  padding: 0;
+}
+
+.existing-title {
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .gallery-page {
+    padding: 32px 16px 64px;
+  }
+
+  .gallery-top {
+    margin-bottom: 36px;
+  }
+
+  .grid {
+    columns: 2;
+    column-gap: 10px;
+  }
+
+  .grid li {
+    margin-bottom: 10px;
+  }
+
+  .admin.narrow {
+    padding-top: 64px;
+  }
+
+  .pending-row {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .pending-row img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .pending-row .link-btn {
+    grid-column: 2;
+    justify-self: start;
+    padding-top: 0;
+  }
+
+  .lightbox {
+    padding: 12px;
+  }
+}
