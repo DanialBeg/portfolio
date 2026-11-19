@@ -1,4 +1,5 @@
 import './App.css'
+import { Link } from 'react-router-dom'
 import ThemeToggle from './components/ThemeToggle'
 import { intro, experience, earlier, projects, posts, education, email, links } from './data'
 
@@ -21,6 +22,7 @@ function App() {
           <nav className="nav" aria-label="Sections">
             <a href="#work">Work</a>
             <a href="#projects">Projects</a>
+            <Link to="/photos">Photos</Link>
             {posts.length > 0 && <a href="#writing">Writing</a>}
             <a href="#contact">Contact</a>
           </nav>
@@ -103,6 +105,13 @@ function App() {
             </ul>
           </section>
         )}
+
+        <section className="block" aria-labelledby="photos-h">
+          <h2 id="photos-h" className="label">Photography</h2>
+          <p>
+            I also take photos. <Link to="/photos">See the ones I'm proudest of</Link>.
+          </p>
+        </section>
 
         <section className="block" aria-labelledby="edu-h">
           <h2 id="edu-h" className="label">Education</h2>
