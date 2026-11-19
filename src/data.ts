@@ -26,7 +26,7 @@ export const intro = {
   name: 'Danial Beg',
   role: 'Machine learning engineer',
   blurb:
-    'I build full-stack machine learning applications for the legal world at Latham & Watkins. Most of what I think about is how AI actually fits into the day-to-day work of professionals.',
+    'I build full-stack machine learning applications for the legal world. Most of what I think about is how AI actually fits into the day-to-day work of professionals.',
 }
 
 export const experience: Role[] = [
