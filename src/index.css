@@ -1,55 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Inter:wght@400;500&display=swap');
 
 /* Shared colour tokens. Variable names are also used by the Pomodoro Buddy
    pages, so keep them stable. */
 :root {
-  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
-  --font-serif: var(--font-display);
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
 
-  --bg-primary: #f4f1ea;
-  --bg-secondary: #ebe7de;
-  --text-primary: #171614;
-  --text-secondary: #57544d;
-  --text-muted: #8a8679;
-  --border-color: #dcd7cb;
-  --border-secondary: #c4beb0;
-  --link-bg: #ebe7de;
-  --link-hover-bg: #171614;
-  --link-hover-text: #f4f1ea;
-  --shadow-color: rgba(23, 22, 20, 0.06);
-  --accent: #c63d17;
+  --bg-primary: #fbfaf7;
+  --bg-secondary: #f2f0ea;
+  --text-primary: #1d1c1a;
+  --text-secondary: #67645c;
+  --text-muted: #85827a;
+  --border-color: #ebe8e1;
+  --border-secondary: #c9c6bd;
+  --link-bg: #f2f0ea;
+  --link-hover-bg: #1d1c1a;
+  --link-hover-text: #fbfaf7;
+  --shadow-color: rgba(29, 28, 26, 0.06);
+  --accent: #8a3b12;
 
   color-scheme: light;
 }
 
 [data-theme='dark'] {
-  --bg-primary: #11100e;
-  --bg-secondary: #0b0a09;
-  --text-primary: #ede8de;
-  --text-secondary: #a8a296;
-  --text-muted: #77736a;
-  --border-color: #2a2824;
-  --border-secondary: #46423a;
-  --link-bg: #1d1b18;
-  --link-hover-bg: #ede8de;
-  --link-hover-text: #11100e;
+  --bg-primary: #141412;
+  --bg-secondary: #0e0e0c;
+  --text-primary: #ebe9e3;
+  --text-secondary: #a6a39b;
+  --text-muted: #85827a;
+  --border-color: #2a2926;
+  --border-secondary: #4a4842;
+  --link-bg: #22211e;
+  --link-hover-bg: #ebe9e3;
+  --link-hover-text: #141412;
   --shadow-color: rgba(0, 0, 0, 0.4);
-  --accent: #ff7349;
+  --accent: #e39a6d;
 
   color-scheme: dark;
-}
-
-/* Faint paper grain over everything */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 html {
